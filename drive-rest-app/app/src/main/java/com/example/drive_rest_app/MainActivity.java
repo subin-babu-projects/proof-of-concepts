@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
      * Handles the {@code result} of a completed sign-in activity initiated from {@link
      * #requestSignIn()}.
      */
-    private void handleSignInResult(Intent result) {
+    private void rehandleSignInResult(Intent result) {
         GoogleSignIn.getSignedInAccountFromIntent(result)
                 .addOnSuccessListener(googleAccount -> {
                     Log.d(TAG, "Signed in as " + googleAccount.getEmail());
@@ -173,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
 //                    .addOnSuccessListener(fileId -> readFile(fileId))
 //                    .addOnFailureListener(exception ->
 //                            Log.e(TAG, "Couldn't create file.", exception));
-
             mDriveServiceHelper.queryFolder("drive_rest_app").addOnSuccessListener(folderList -> {
                 Log.e(TAG,String.format("folder count ; %d",folderList.getFiles().size()));
                 if(folderList.getFiles().size() == 0) {
